@@ -58,7 +58,7 @@ async function parseRssFeed(xml: string): Promise<ChangelogEntry[]> {
       ? result.rss.channel.item 
       : [result.rss.channel.item]
     
-    return items.map(item => ({
+    return items.map((item: any) => ({
       title: item.title,
       link: item.link,
       pubDate: item.pubDate,

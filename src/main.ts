@@ -2,9 +2,9 @@ import * as core from '@actions/core'
 import * as github from '@actions/github'
 import * as fs from 'fs'
 import * as path from 'path'
-import { fetchChangelogFeed, ChangelogEntry } from './rss-feed'
+import { fetchChangelogFeed, ChangelogEntry } from './rss-feed.js'
 
-async function run(): Promise<void> {
+export async function run(): Promise<void> {
   try {
     // Get inputs
     const token = core.getInput('token')
@@ -43,7 +43,7 @@ async function run(): Promise<void> {
     // Filter for new entries
     let newEntries = entries
     if (lastProcessedGuid) {
-      const lastProcessedIndex = entries.findIndex(entry => entry.guid === lastProcessedGuid)
+      const lastProcessedIndex = entries.findIndex((entry: ChangelogEntry) => entry.guid === lastProcessedGuid)
       if (lastProcessedIndex !== -1) {
         newEntries = entries.slice(0, lastProcessedIndex)
       }
