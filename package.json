@@ -2,16 +2,16 @@
   "name": "github-changelog-reader",
   "description": "GitHub Action to read the GitHub Changelog feed and create issues",
   "version": "1.0.0",
-  "author": "",
+  "author": "GitHub Actions",
   "type": "module",
   "private": true,
-  "homepage": "https://github.com/actions/typescript-action",
+  "homepage": "https://github.com/actions/github-changelog-reader",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/actions/github-changelog-reader.git"
   },
   "bugs": {
-    "url": "https://github.com/actions/typescript-action/issues"
+    "url": "https://github.com/actions/github-changelog-reader/issues"
   },
   "keywords": [
     "github",
@@ -29,7 +29,11 @@
     "build": "tsc",
     "bundle": "ncc build --source-map",
     "test": "jest",
-    "all": "npm run build && npm run bundle && npm test"
+    "format": "prettier --write '**/*.ts'",
+    "format:check": "prettier --check '**/*.ts'",
+    "lint": "eslint src/**/*.ts",
+    "ci-test": "jest --ci --coverage",
+    "all": "npm run build && npm run format && npm run lint && npm run bundle && npm test"
   },
   "license": "MIT",
   "dependencies": {
