@@ -28,7 +28,7 @@
   "scripts": {
     "build": "tsc",
     "prebuild": "npm install --no-save @types/xml2js",
-    "bundle": "ncc build --source-map",
+    "bundle": "ncc build src/index.ts --source-map --license licenses.txt",
     "test": "jest",
     "format": "prettier --write '**/*.ts'",
     "format:check": "prettier --check '**/*.ts'",

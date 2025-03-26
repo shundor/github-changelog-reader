@@ -92,7 +92,7 @@ async function parseRssFeed(xml: string): Promise<ChangelogEntry[]> {
       trim: true
     })
 
-    const result = await parser.parseStringPromise(xml) as RssFeed
+    const result = (await parser.parseStringPromise(xml)) as RssFeed
 
     if (!result.rss || !result.rss.channel || !result.rss.channel.item) {
       throw new Error('Invalid RSS feed structure')
@@ -107,7 +107,10 @@ async function parseRssFeed(xml: string): Promise<ChangelogEntry[]> {
       link: item.link,
       pubDate: item.pubDate,
       content: item['content:encoded'] || item.description || '',
-      guid: item.guid && typeof item.guid === 'object' && 'id' in item.guid ? item.guid._ : String(item.guid)
+      guid:
+        item.guid && typeof item.guid === 'object' && 'id' in item.guid
+          ? item.guid._
+          : String(item.guid)
     }))
   } catch (error) {
     core.warning(`Error parsing RSS feed: ${error}`)

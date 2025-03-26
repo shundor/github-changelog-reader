@@ -7,23 +7,34 @@ export async function fetchChangelogFeed(feedUrl) {
 }
 function fetchXml(url) {
     return new Promise((resolve, reject) => {
-        https.get(url, res => {
+        const req = https.get(url, (res) => {
             if (res.statusCode !== 200) {
                 reject(new Error(`Failed to fetch feed: ${res.statusCode}`));
                 return;
             }
             const data = [];
-            res.on('data', chunk => {
+            res.on('data', (chunk) => {
                 data.push(chunk);
             });
             res.on('end', () => {
                 const xml = Buffer.concat(data).toString();
                 resolve(xml);
             });
-            res.on('error', err => {
+            res.on('error', (err) => {
                 reject(err);
             });
         });
+        // Add timeout handler to prevent hanging requests
+        req.setTimeout(10000, () => {
+            req.destroy();
+            reject(new Error('Request timed out after 10 seconds'));
+        });
+        // Handle request-level errors
+        req.on('error', (err) => {
+            reject(err);
+        });
+        // Ensure the request is completed
+        req.end();
     });
 }
 async function parseRssFeed(xml) {
@@ -32,7 +43,7 @@ async function parseRssFeed(xml) {
             explicitArray: false,
             trim: true
         });
-        const result = await parser.parseStringPromise(xml);
+        const result = (await parser.parseStringPromise(xml));
         if (!result.rss || !result.rss.channel || !result.rss.channel.item) {
             throw new Error('Invalid RSS feed structure');
         }
@@ -44,7 +55,9 @@ async function parseRssFeed(xml) {
             link: item.link,
             pubDate: item.pubDate,
             content: item['content:encoded'] || item.description || '',
-            guid: item.guid && item.guid._ ? item.guid._ : item.guid
+            guid: item.guid && typeof item.guid === 'object' && 'id' in item.guid
+                ? item.guid._
+                : String(item.guid)
         }));
     }
     catch (error) {
