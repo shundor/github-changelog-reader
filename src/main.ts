@@ -1,27 +1,112 @@
 import * as core from '@actions/core'
-import { wait } from './wait.js'
+import * as github from '@actions/github'
+import * as fs from 'fs'
+import * as path from 'path'
+import { fetchChangelogFeed, ChangelogEntry } from './rss-feed'
 
-/**
- * The main function for the action.
- *
- * @returns Resolves when the action is complete.
- */
-export async function run(): Promise<void> {
+async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
+    // Get inputs
+    const token = core.getInput('token')
+    const label = core.getInput('label')
+    const storeLocation = core.getInput('store-location')
+    const issueTitlePrefix = core.getInput('issue-title-prefix')
+    const feedUrl = core.getInput('feed-url')
 
-    // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-    core.debug(`Waiting ${ms} milliseconds ...`)
+    const octokit = github.getOctokit(token)
+    const context = github.context
 
-    // Log the current timestamp, wait, then log the new timestamp
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    // Ensure directory exists for the store location
+    const storeDir = path.dirname(storeLocation)
+    if (!fs.existsSync(storeDir)) {
+      fs.mkdirSync(storeDir, { recursive: true })
+    }
 
-    // Set outputs for other workflow steps to use
-    core.setOutput('time', new Date().toTimeString())
+    // Get the last processed entry ID
+    let lastProcessedGuid: string | null = null
+    try {
+      if (fs.existsSync(storeLocation)) {
+        lastProcessedGuid = fs.readFileSync(storeLocation, 'utf8').trim()
+        core.info(`Last processed changelog entry: ${lastProcessedGuid}`)
+      } else {
+        core.info('No previously processed entries found')
+      }
+    } catch (error) {
+      core.warning(`Error reading last processed entry: ${error}`)
+    }
+
+    // Fetch the RSS feed
+    core.info(`Fetching GitHub Changelog feed from ${feedUrl}`)
+    const entries = await fetchChangelogFeed(feedUrl)
+    core.info(`Found ${entries.length} entries in the feed`)
+
+    // Filter for new entries
+    let newEntries = entries
+    if (lastProcessedGuid) {
+      const lastProcessedIndex = entries.findIndex(entry => entry.guid === lastProcessedGuid)
+      if (lastProcessedIndex !== -1) {
+        newEntries = entries.slice(0, lastProcessedIndex)
+      }
+    }
+
+    core.info(`Found ${newEntries.length} new entries to process`)
+
+    // Create issues for new entries
+    let issuesCreated = 0
+    for (const entry of newEntries) {
+      await createIssueFromEntry(octokit, context.repo, entry, label, issueTitlePrefix)
+      issuesCreated++
+      core.info(`Created issue for entry: ${entry.title}`)
+    }
+
+    // Store the ID of the latest entry
+    if (entries.length > 0) {
+      const latestGuid = entries[0].guid
+      fs.writeFileSync(storeLocation, latestGuid)
+      core.info(`Updated last processed entry to: ${latestGuid}`)
+      core.setOutput('last-processed-guid', latestGuid)
+    }
+
+    // Set outputs
+    core.setOutput('issues-created', issuesCreated.toString())
+    core.info(`Created ${issuesCreated} new issues`)
+
   } catch (error) {
-    // Fail the workflow run if an error occurs
-    if (error instanceof Error) core.setFailed(error.message)
+    if (error instanceof Error) {
+      core.setFailed(error.message)
+    } else {
+      core.setFailed(`Unknown error: ${error}`)
+    }
   }
 }
+
+async function createIssueFromEntry(
+  octokit: ReturnType<typeof github.getOctokit>,
+  repo: { owner: string; repo: string },
+  entry: ChangelogEntry,
+  label: string,
+  titlePrefix: string
+): Promise<void> {
+  const title = `${titlePrefix}${entry.title}`
+  const body = `
+# ${entry.title}
+
+${entry.content}
+
+---
+
+🔗 [View original changelog entry](${entry.link})
+📅 Published: ${entry.pubDate}
+  `.trim()
+
+  const labels = label ? [label] : []
+
+  await octokit.rest.issues.create({
+    ...repo,
+    title,
+    body,
+    labels
+  })
+}
+
+run()

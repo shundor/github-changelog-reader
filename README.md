@@ -1,4 +1,4 @@
-# Create a GitHub Action Using TypeScript
+# GitHub Changelog Reader
 
 [![GitHub Super-Linter](https://github.com/actions/typescript-action/actions/workflows/linter.yml/badge.svg)](https://github.com/super-linter/super-linter)
 ![CI](https://github.com/actions/typescript-action/actions/workflows/ci.yml/badge.svg)
@@ -6,32 +6,77 @@
 [![CodeQL](https://github.com/actions/typescript-action/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/actions/typescript-action/actions/workflows/codeql-analysis.yml)
 [![Coverage](./badges/coverage.svg)](./badges/coverage.svg)
 
-Use this template to bootstrap the creation of a TypeScript action. :rocket:
+A GitHub Action that reads the GitHub Changelog RSS feed and creates GitHub issues for each new post. Stay updated with GitHub's latest changes directly in your repository! :rocket:
 
-This template includes compilation support, tests, a validation workflow,
-publishing, and versioning guidance.
+This action will:
+1. Fetch the GitHub Changelog RSS feed
+2. Parse the feed for new entries
+3. Create GitHub issues for any new changelog entries
+4. Store the last processed entry to avoid duplicates
 
-If you are new, there's also a simpler introduction in the
-[Hello world JavaScript action repository](https://github.com/actions/hello-world-javascript-action).
+## Usage
 
-## Create Your Own Action
+Add this action to your workflow to automatically create GitHub issues for new GitHub Changelog posts:
 
-To create your own action, you can use this repository as a template! Just
-follow the below instructions:
+```yaml
+name: GitHub Changelog Monitor
+on:
+  schedule:
+    - cron: '0 10 * * *'  # Runs daily at 10:00 AM UTC
+  workflow_dispatch:       # Allow manual execution
 
-1. Click the **Use this template** button at the top of the repository
-1. Select **Create a new repository**
-1. Select an owner and name for your new repository
-1. Click **Create repository**
-1. Clone your new repository
+jobs:
+  check-changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Need to fetch history to save state between runs
+          fetch-depth: 0
+          
+      - name: Check GitHub Changelog
+        uses: your-username/github-changelog-reader@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          label: changelog
+          store-location: .github/last-changelog-guid.txt
 
-> [!IMPORTANT]
->
-> Make sure to remove or update the [`CODEOWNERS`](./CODEOWNERS) file! For
-> details on how to use this file, see
-> [About code owners](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners).
+      - name: Commit updated state
+        if: success()
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add .github/last-changelog-guid.txt
+          git commit -m "Update last processed changelog entry" || echo "No changes to commit"
+          git push
+```
 
-## Initial Setup
+## Inputs
+
+| Input | Description | Required | Default |
+| --- | --- | --- | --- |
+| `token` | GitHub token for creating issues | Yes | N/A |
+| `label` | Label to add to created issues | No | `changelog` |
+| `store-location` | File path to store the last processed entry ID | No | `.github/last-changelog-guid.txt` |
+| `issue-title-prefix` | Prefix for issue titles | No | `GitHub Changelog: ` |
+| `feed-url` | URL to the GitHub Changelog RSS feed | No | `https://github.blog/changelog/feed/` |
+
+## Outputs
+
+| Output | Description |
+| --- | --- |
+| `issues-created` | Number of new issues created |
+| `last-processed-guid` | GUID of the last processed changelog entry |
+
+## Example Issues
+
+Issues created will have:
+- Title with the changelog entry title
+- Body with the changelog entry content
+- A label (customizable via inputs)
+- A link back to the original changelog entry
+
+## Development
 
 After you've cloned the repository to your local machine or codespace, you'll
 need to perform some initial setup steps before you can develop your action.
