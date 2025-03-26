@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/">
+  <channel>
+    <title>GitHub Changelog</title>
+    <description>The latest product changes and features for developers from GitHub</description>
+    <link>https://github.blog/changelog/</link>
+    <atom:link href="https://github.blog/changelog/feed/" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Aug 2024 18:30:00 +0000</lastBuildDate>
+    <language>en-US</language>
+    <item>
+      <title>New GitHub API endpoint for repository statistics</title>
+      <link>https://github.blog/changelog/2024-08-28-new-api-endpoint-repository-stats</link>
+      <pubDate>Wed, 28 Aug 2024 18:30:00 +0000</pubDate>
+      <dc:creator>github-actions[bot]</dc:creator>
+      <guid isPermaLink="false">github-changelog-2024-08-28-1</guid>
+      <description>A brief description of the new API endpoint</description>
+      <content:encoded><![CDATA[
+        <h2>New Repository Statistics API</h2>
+        <p>We are excited to announce a new API endpoint for accessing repository statistics.</p>
+        <p>This new endpoint allows developers to:</p>
+        <ul>
+          <li>Access commit frequency data over time</li>
+          <li>View contributor statistics</li>
+          <li>Track code size changes</li>
+        </ul>
+        <p>For more information, see the <a href="https://docs.github.com/en/rest/reference/repos#statistics">API documentation</a>.</p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Improved workflow dispatch events</title>
+      <link>https://github.blog/changelog/2024-08-27-improved-workflow-dispatch</link>
+      <pubDate>Tue, 27 Aug 2024 14:15:00 +0000</pubDate>
+      <dc:creator>github-actions[bot]</dc:creator>
+      <guid isPermaLink="false">github-changelog-2024-08-27-1</guid>
+      <description>Workflow dispatch events now support additional payload options</description>
+      <content:encoded><![CDATA[
+        <h2>Enhanced workflow_dispatch Events</h2>
+        <p>GitHub Actions now supports enhanced payload options for manually triggered workflows.</p>
+        <p>New features include:</p>
+        <ul>
+          <li>Support for complex JSON payloads</li>
+          <li>Improved validation of inputs</li>
+          <li>Better error reporting</li>
+        </ul>
+        <p>These improvements make it easier to pass complex data to your workflows when triggering them manually.</p>
+      ]]></content:encoded>
+    </item>
+  </channel>
+</rss>
