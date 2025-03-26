@@ -1,24 +1,38 @@
-name: The name of your action here
-description: Provide a description here
-author: Your name or organization here
+name: 'GitHub Changelog Reader'
+description: 'Reads the GitHub Changelog RSS feed and creates GitHub issues for each new post'
+author: 'Your Name'
 
-# Add your action's branding here. This will appear on the GitHub Marketplace.
-branding:
-  icon: heart
-  color: red
-
-# Define your inputs here.
 inputs:
-  milliseconds:
-    description: Your input description here
+  token:
+    description: 'GitHub token for creating issues'
     required: true
-    default: '1000'
+  label:
+    description: 'Label to add to created issues'
+    required: false
+    default: 'changelog'
+  store-location:
+    description: 'File path to store the last processed entry ID'
+    required: false
+    default: '.github/last-changelog-guid.txt'
+  issue-title-prefix:
+    description: 'Prefix for issue titles'
+    required: false
+    default: 'GitHub Changelog: '
+  feed-url:
+    description: 'URL to the GitHub Changelog RSS feed'
+    required: false
+    default: 'https://github.blog/changelog/feed/'
 
-# Define your outputs here.
 outputs:
-  time:
-    description: Your output description here
+  issues-created:
+    description: 'Number of new issues created'
+  last-processed-guid:
+    description: 'GUID of the last processed changelog entry'
 
 runs:
-  using: node20
-  main: dist/index.js
+  using: 'node20'
+  main: 'dist/index.js'
+
+branding:
+  icon: 'rss'
+  color: 'blue'
