@@ -39,5 +39,20 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add dist/
-          git commit -m "chore: update dist for release ${{ github.event.release.tag_name }}" || echo "No changes to commit"
-          git push origin HEAD:${{ github.event.release.target_commitish }}
+          
+          # Set release tag name or use commit SHA for workflow_dispatch
+          RELEASE_TAG="${{ github.event.release.tag_name }}"
+          if [ -z "$RELEASE_TAG" ]; then
+            RELEASE_TAG="$(git rev-parse --short HEAD)"
+          fi
+          
+          git commit -m "chore: update dist for release ${RELEASE_TAG}" || echo "No changes to commit"
+          
+          # Set target branch - use release target branch or default branch
+          TARGET_BRANCH="${{ github.event.release.target_commitish }}"
+          if [ -z "$TARGET_BRANCH" ]; then
+            TARGET_BRANCH="${GITHUB_REF#refs/heads/}"
+          fi
+          
+          # Push to the correct branch
+          git push origin HEAD:"$TARGET_BRANCH"
