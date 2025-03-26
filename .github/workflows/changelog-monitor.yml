@@ -1,0 +1,43 @@
+name: GitHub Changelog Monitor
+
+on:
+  schedule:
+    - cron: '0 10 * * *'  # Runs daily at 10:00 AM UTC
+  workflow_dispatch:       # Allow manual execution
+
+jobs:
+  check-changelog:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Need to fetch history to save state between runs
+          fetch-depth: 0
+          
+      - name: Check GitHub Changelog
+        id: changelog
+        uses: ./
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          label: changelog
+          store-location: .github/last-changelog-guid.txt
+          issue-title-prefix: "GitHub Changelog: "
+
+      - name: Report results
+        if: success()
+        run: |
+          echo "Created ${{ steps.changelog.outputs.issues-created }} new issues for GitHub changelog entries"
+          echo "Last processed entry: ${{ steps.changelog.outputs.last-processed-guid }}"
+
+      - name: Commit updated state
+        if: success()
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add .github/last-changelog-guid.txt
+          git commit -m "Update last processed changelog entry" || echo "No changes to commit"
+          git push
