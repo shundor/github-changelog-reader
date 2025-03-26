@@ -75,7 +75,9 @@ describe('main.ts', () => {
 
     // Mock fs functions
     const fsMock = jest.mocked(fs)
-    fsMock.existsSync.mockImplementation((path) => path === '.github/last-changelog-guid.txt')
+    fsMock.existsSync.mockImplementation(
+      (path) => path === '.github/last-changelog-guid.txt'
+    )
     fsMock.readFileSync.mockImplementation(() => 'entry-2')
 
     // Mock github context
@@ -109,7 +111,10 @@ describe('main.ts', () => {
 
     // Verify outputs
     expect(core.setOutput).toHaveBeenCalledWith('issues-created', '1')
-    expect(core.setOutput).toHaveBeenCalledWith('last-processed-guid', 'entry-1')
+    expect(core.setOutput).toHaveBeenCalledWith(
+      'last-processed-guid',
+      'entry-1'
+    )
   })
 
   it('Creates issues for all entries when no previous entry exists', async () => {

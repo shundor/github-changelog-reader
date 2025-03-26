@@ -43,7 +43,9 @@ export async function run(): Promise<void> {
     // Filter for new entries
     let newEntries = entries
     if (lastProcessedGuid) {
-      const lastProcessedIndex = entries.findIndex((entry: ChangelogEntry) => entry.guid === lastProcessedGuid)
+      const lastProcessedIndex = entries.findIndex(
+        (entry: ChangelogEntry) => entry.guid === lastProcessedGuid
+      )
       if (lastProcessedIndex !== -1) {
         newEntries = entries.slice(0, lastProcessedIndex)
       }
@@ -54,7 +56,13 @@ export async function run(): Promise<void> {
     // Create issues for new entries
     let issuesCreated = 0
     for (const entry of newEntries) {
-      await createIssueFromEntry(octokit, context.repo, entry, label, issueTitlePrefix)
+      await createIssueFromEntry(
+        octokit,
+        context.repo,
+        entry,
+        label,
+        issueTitlePrefix
+      )
       issuesCreated++
       core.info(`Created issue for entry: ${entry.title}`)
     }
@@ -70,7 +78,6 @@ export async function run(): Promise<void> {
     // Set outputs
     core.setOutput('issues-created', issuesCreated.toString())
     core.info(`Created ${issuesCreated} new issues`)
-
   } catch (error) {
     if (error instanceof Error) {
       core.setFailed(error.message)

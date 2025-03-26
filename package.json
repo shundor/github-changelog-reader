@@ -27,6 +27,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "prebuild": "npm install --no-save @types/xml2js",
     "bundle": "ncc build --source-map",
     "test": "jest",
     "format": "prettier --write '**/*.ts'",

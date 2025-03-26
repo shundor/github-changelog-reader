@@ -18,12 +18,12 @@ describe('rss-feed.ts', () => {
   beforeEach(() => {
     // Reset mocks
     jest.clearAllMocks()
-    
+
     // Create mock response and request objects
     mockResponse = new EventEmitter()
     mockResponse.statusCode = 200
     mockRequest = new EventEmitter()
-    
+
     // Mock https.get to return our mock request and trigger our mock response
     const mockGet = https.get as jest.Mock
     mockGet.mockImplementation((url, callback) => {
@@ -35,9 +35,11 @@ describe('rss-feed.ts', () => {
   it('fetches and parses RSS feed successfully', async () => {
     // Create a promise to wait for the async function to complete
     const fetchPromise = fetchChangelogFeed('https://example.com/feed')
-    
+
     // Emit data and end events on the response
-    mockResponse.emit('data', Buffer.from(`
+    mockResponse.emit(
+      'data',
+      Buffer.from(`
       <rss version="2.0">
         <channel>
           <title>GitHub Changelog</title>
@@ -57,12 +59,13 @@ describe('rss-feed.ts', () => {
           </item>
         </channel>
       </rss>
-    `))
+    `)
+    )
     mockResponse.emit('end')
-    
+
     // Wait for the promise to resolve
     const entries = await fetchPromise
-    
+
     // Check the result
     expect(entries).toHaveLength(2)
     expect(entries[0]).toEqual({
@@ -84,10 +87,10 @@ describe('rss-feed.ts', () => {
   it('handles HTTP error status code', async () => {
     // Set error status code
     mockResponse.statusCode = 404
-    
+
     // Create the promise
     const fetchPromise = fetchChangelogFeed('https://example.com/feed')
-    
+
     // Expect the promise to reject
     await expect(fetchPromise).rejects.toThrow('Failed to fetch feed: 404')
   })
@@ -95,10 +98,10 @@ describe('rss-feed.ts', () => {
   it('handles network errors', async () => {
     // Create the promise
     const fetchPromise = fetchChangelogFeed('https://example.com/feed')
-    
+
     // Emit an error
     mockResponse.emit('error', new Error('Network error'))
-    
+
     // Expect the promise to reject
     await expect(fetchPromise).rejects.toThrow('Network error')
   })
@@ -106,11 +109,11 @@ describe('rss-feed.ts', () => {
   it('handles invalid RSS feed structure', async () => {
     // Create a promise to wait for the async function to complete
     const fetchPromise = fetchChangelogFeed('https://example.com/feed')
-    
+
     // Emit data with invalid RSS structure
     mockResponse.emit('data', Buffer.from('<invalid>XML</invalid>'))
     mockResponse.emit('end')
-    
+
     // Expect the promise to reject
     await expect(fetchPromise).rejects.toThrow('Failed to parse RSS feed')
   })
