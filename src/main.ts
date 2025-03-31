@@ -36,7 +36,6 @@ export async function run(): Promise<void> {
     }
 
     // Fetch the RSS feed
-    core.info(`Fetching GitHub Changelog feed from ${feedUrl}`)
     const entries = await fetchChangelogFeed(feedUrl)
     core.info(`Found ${entries.length} entries in the feed`)
 
@@ -70,9 +69,6 @@ export async function run(): Promise<void> {
     // Store the ID of the latest entry
     if (entries.length > 0) {
       const latestGuid = entries[0].guid
-      core.info(`Latest entry: ${JSON.stringify(entries[0])}`)
-      core.info(`Latest GUID type: ${typeof latestGuid}`)
-      core.info(`Latest GUID value: ${JSON.stringify(latestGuid)}`)
       fs.writeFileSync(storeLocation, latestGuid)
       core.info(`Updated last processed entry to: ${latestGuid}`)
       core.setOutput('last-processed-guid', latestGuid)

@@ -64,22 +64,10 @@ jobs:
           label: changelog
           
           # File path to store the ID of the last processed changelog entry
-          store-location: .github/last-changelog-guid.txt
+          store-location: .github/last-changelog-guid-test.txt
           
           # Prefix for issue titles (default: "GitHub Changelog: ")
           issue-title-prefix: "GitHub Changelog: "
-          
-          # Optional: Number of changelog entries to process (default: 10)
-          # entries-limit: 10
-          
-          # Optional: GitHub API URL (default: https://api.github.com)
-          # github-api-url: https://api.github.com
-          
-          # Optional: Set to true to create issues with minimal content (default: false)
-          # minimal-issues: false
-          
-          # Optional: Specific repository to create issues in (format: owner/repo)
-          # target-repo: owner/repo
 
       - name: Print Output
         id: output
