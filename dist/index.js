@@ -40971,8 +40971,6 @@ var xml2js = __nccwpck_require__(758);
 
 
 async function fetchChangelogFeed(feedUrl) {
-    console.log(`fetchChangelogFeed called with URL: ${feedUrl}`);
-    console.trace('fetchChangelogFeed stack trace');
     const xml = await fetchXml(feedUrl);
     return parseRssFeed(xml);
 }

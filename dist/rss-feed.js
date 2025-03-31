@@ -2,8 +2,6 @@ import * as core from '@actions/core';
 import * as https from 'https';
 import { Parser } from 'xml2js';
 export async function fetchChangelogFeed(feedUrl) {
-    console.log(`fetchChangelogFeed called with URL: ${feedUrl}`);
-    console.trace('fetchChangelogFeed stack trace');
     const xml = await fetchXml(feedUrl);
     return parseRssFeed(xml);
 }
