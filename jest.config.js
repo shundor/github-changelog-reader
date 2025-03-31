@@ -3,7 +3,7 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} **/
 export default {
   clearMocks: true,
-  collectCoverage: true,
+  collectCoverage: false,
   collectCoverageFrom: ['./src/**'],
   coverageDirectory: './coverage',
   coveragePathIgnorePatterns: ['/node_modules/', '/dist/'],
