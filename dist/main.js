@@ -55,6 +55,7 @@ export async function run() {
         // Store the ID of the latest entry
         if (entries.length > 0) {
             const latestGuid = entries[0].guid;
+            core.info(`Latest entry: ${JSON.stringify(entries[0])}`);
             core.info(`Latest GUID type: ${typeof latestGuid}`);
             core.info(`Latest GUID value: ${JSON.stringify(latestGuid)}`);
             fs.writeFileSync(storeLocation, latestGuid);

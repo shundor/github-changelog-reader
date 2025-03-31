@@ -40971,6 +40971,8 @@ var xml2js = __nccwpck_require__(758);
 
 
 async function fetchChangelogFeed(feedUrl) {
+    console.log(`fetchChangelogFeed called with URL: ${feedUrl}`);
+    console.trace('fetchChangelogFeed stack trace');
     const xml = await fetchXml(feedUrl);
     return parseRssFeed(xml);
 }
@@ -41093,6 +41095,7 @@ async function run() {
         // Store the ID of the latest entry
         if (entries.length > 0) {
             const latestGuid = entries[0].guid;
+            core.info(`Latest entry: ${JSON.stringify(entries[0])}`);
             core.info(`Latest GUID type: ${typeof latestGuid}`);
             core.info(`Latest GUID value: ${JSON.stringify(latestGuid)}`);
             external_fs_.writeFileSync(storeLocation, latestGuid);
