@@ -5,6 +5,8 @@ on:
     - cron: '0 10 * * *'  # Runs daily at 10:00 AM UTC
   workflow_dispatch:       # Allow manual execution
 
+permissions: read-all
+
 jobs:
   check-changelog:
     runs-on: ubuntu-latest

@@ -5,6 +5,8 @@ on:
     types: [created]
   workflow_dispatch:
 
+permissions: read-all
+
 jobs:
   build-and-commit:
     runs-on: ubuntu-latest
