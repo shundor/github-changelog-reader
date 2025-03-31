@@ -95,4 +95,3 @@ ${entry.content}
         labels
     });
 }
-run();

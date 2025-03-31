@@ -41026,7 +41026,7 @@ async function parseRssFeed(xml) {
             link: item.link,
             pubDate: item.pubDate,
             content: item['content:encoded'] || item.description || '',
-            guid: item.guid && typeof item.guid === 'object' && 'id' in item.guid
+            guid: typeof item.guid === 'object' && item.guid._
                 ? item.guid._
                 : String(item.guid)
         }));
@@ -41135,7 +41135,6 @@ ${entry.content}
         labels
     });
 }
-run();
 
 ;// CONCATENATED MODULE: ./src/index.ts
 /**

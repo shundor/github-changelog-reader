@@ -110,7 +110,7 @@ async function parseRssFeed(xml: string): Promise<ChangelogEntry[]> {
       pubDate: item.pubDate,
       content: item['content:encoded'] || item.description || '',
       guid:
-        item.guid && typeof item.guid === 'object' && 'id' in item.guid
+        typeof item.guid === 'object' && item.guid._
           ? item.guid._
           : String(item.guid)
     }))
