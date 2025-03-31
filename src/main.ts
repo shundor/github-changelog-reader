@@ -118,5 +118,3 @@ ${entry.content}
     labels
   })
 }
-
-run()
