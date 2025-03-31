@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-03-27-deprecation-of-cvss-field-in-security-advisories-api
+https://github.blog/changelog/2025-03-30-closing-down-enterprise-cloud-importer-eci-effective-march-31-2025
