@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-03-31-github-secret-protection-and-github-code-security-for-github-enterprise
+https://github.blog/changelog/2025-04-02-github-issues-dashboard-updates
