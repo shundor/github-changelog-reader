@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-04-03-copilot-code-review-now-generally-available
+https://github.blog/changelog/2025-04-07-changes-to-the-repository-object-in-push-webhook
