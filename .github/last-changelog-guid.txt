@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-04-08-deepseek-v3-0324-is-now-generally-available-in-github-models
+https://github.blog/changelog/2025-04-09-copilot-chat-now-supports-pasting-links
