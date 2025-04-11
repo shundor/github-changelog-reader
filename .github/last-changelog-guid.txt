@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-04-09-copilot-chat-now-supports-pasting-links
+https://github.blog/changelog/2025-04-10-removing-hardcoded-secrets-detection-from-codeql
