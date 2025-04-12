@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-04-10-removing-hardcoded-secrets-detection-from-codeql
+https://github.blog/changelog/2025-04-11-vscode-copilot-agent-mode-in-codespaces
