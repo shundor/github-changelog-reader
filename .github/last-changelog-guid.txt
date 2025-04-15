@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-04-11-vscode-copilot-agent-mode-in-codespaces
+https://github.blog/changelog/2025-04-14-github-actions-token-integration-now-generally-available-in-github-models
