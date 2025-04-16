@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-04-14-github-actions-token-integration-now-generally-available-in-github-models
+https://github.blog/changelog/2025-04-15-upcoming-breaking-changes-and-releases-for-github-actions
