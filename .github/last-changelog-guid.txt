@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-04-15-upcoming-breaking-changes-and-releases-for-github-actions
+https://github.blog/changelog/2025-04-16-cohere-command-a-and-embed-4-now-generally-available-in-github-models
