@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-04-16-cohere-command-a-and-embed-4-now-generally-available-in-github-models
+https://github.blog/changelog/2025-04-17-organization-custom-instructions-now-available
