@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-04-18-performance-improvements-for-the-organizational-feed
+https://github.blog/changelog/2025-04-18-github-copilot-for-xcode-adds-workspace-and-support-for-claude-3-7-sonnet-and-gpt-4-5
