@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-04-22-updates-to-security-configuration-settings-for-customers-in-existing-grace-periods
+https://github.blog/changelog/2025-04-23-users-can-now-choose-whether-merging-linked-pull-requests-automatically-closes-the-issue
