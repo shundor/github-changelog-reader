@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-04-23-users-can-now-choose-whether-merging-linked-pull-requests-automatically-closes-the-issue
+https://github.blog/changelog/2025-04-24-user-prompt-improvement-is-now-in-public-preview-within-the-github-models-playground
