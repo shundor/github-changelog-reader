@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-04-24-user-prompt-improvement-is-now-in-public-preview-within-the-github-models-playground
+https://github.blog/changelog/2025-04-29-credential-revocation-api-to-revoke-exposed-pats-is-now-generally-available
