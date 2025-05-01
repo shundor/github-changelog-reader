@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-04-29-credential-revocation-api-to-revoke-exposed-pats-is-now-generally-available
+https://github.blog/changelog/2025-04-30-dependabot-adds-arc-actions-runner-controller-support-for-security-and-version-updates-in-public-preview
