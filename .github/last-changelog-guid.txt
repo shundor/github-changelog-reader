@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-04-30-dependabot-adds-arc-actions-runner-controller-support-for-security-and-version-updates-in-public-preview
+https://github.blog/changelog/2025-05-01-github-now-provides-a-warning-about-hidden-unicode-text
