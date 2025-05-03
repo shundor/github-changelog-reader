@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-05-01-github-now-provides-a-warning-about-hidden-unicode-text
+https://github.blog/changelog/2025-05-02-track-progress-on-code-scanning-alerts-with-the-new-development-section
