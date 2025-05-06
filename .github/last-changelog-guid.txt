@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-05-02-track-progress-on-code-scanning-alerts-with-the-new-development-section
+https://github.blog/changelog/2025-05-05-dependency-graph-deduplication-is-now-generally-available
