@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-05-07-enforcement-of-copilot-premium-request-limits-moved-to-june-4-2025
+https://github.blog/changelog/2025-05-08-github-copilot-in-vs-code-april-release-v1-100
