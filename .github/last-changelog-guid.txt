@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-05-08-github-copilot-in-vs-code-april-release-v1-100
+https://github.blog/changelog/2025-05-13-enterprise-level-management-for-secret-scanning-alert-dismissal-requests-is-now-available
