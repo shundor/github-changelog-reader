@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-05-16-github-copilot-coding-agent-in-public-preview
+https://github.blog/changelog/2025-05-20-codeql-adds-support-for-kotlin-2-2-0x-in-version-2-21-3
