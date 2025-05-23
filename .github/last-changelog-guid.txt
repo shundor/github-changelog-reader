@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-05-21-grok-3-mini-is-now-available-in-public-preview-in-github-models
+https://github.blog/changelog/2025-05-22-sunset-of-automatic-watching-of-repositories-and-teams
