@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-05-22-sunset-of-automatic-watching-of-repositories-and-teams
+https://github.blog/changelog/2025-05-27-dependabot-support-for-virtual-network-vnet-and-actions-runner-controller-arc-is-generally-available
