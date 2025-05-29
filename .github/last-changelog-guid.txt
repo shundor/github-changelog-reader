@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-05-27-dependabot-support-for-virtual-network-vnet-and-actions-runner-controller-arc-is-generally-available
+https://github.blog/changelog/2025-05-28-incremental-security-analysis-makes-codeql-up-to-20-faster-in-pull-requests
