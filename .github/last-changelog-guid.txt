@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-05-29-introducing-copilot-spaces-a-new-way-to-work-with-code-and-context
+https://github.blog/changelog/2025-05-30-json-schema-support-in-github-models-ai-developer-tooling
