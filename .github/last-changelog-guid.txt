@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-05-30-json-schema-support-in-github-models-ai-developer-tooling
+https://github.blog/changelog/2025-06-03-copilot-chat-now-supports-attaching-references-using-the-symbol
