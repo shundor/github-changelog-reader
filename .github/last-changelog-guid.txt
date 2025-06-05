@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-06-03-copilot-chat-now-supports-attaching-references-using-the-symbol
+https://github.blog/changelog/2025-06-04-enhanced-metrics-for-codeql-pull-request-alerts-and-copilot-autofixes
