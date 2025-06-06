@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-06-04-enhanced-metrics-for-codeql-pull-request-alerts-and-copilot-autofixes
+https://github.blog/changelog/2025-06-05-fluency-and-coherence-evaluators-added-to-github-models
