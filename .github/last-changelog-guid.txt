@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-06-05-fluency-and-coherence-evaluators-added-to-github-models
+https://github.blog/changelog/2025-06-06-you-can-now-run-model-evaluations-with-the-models-cli
