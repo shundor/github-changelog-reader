@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-06-06-you-can-now-run-model-evaluations-with-the-models-cli
+https://github.blog/changelog/2025-06-09-github-app-manager-can-now-be-granted-to-teams
