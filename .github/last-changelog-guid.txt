@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-06-09-github-app-manager-can-now-be-granted-to-teams
+https://github.blog/changelog/2025-06-10-delegated-alert-dismissal-for-secret-protection-is-generally-available
