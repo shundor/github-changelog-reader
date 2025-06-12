@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-06-10-delegated-alert-dismissal-for-secret-protection-is-generally-available
+https://github.blog/changelog/2025-06-11-gain-more-control-and-clarity-with-scheduled-reminders-for-pull-requests
