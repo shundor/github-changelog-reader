@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-06-16-mean-time-to-remediate-metric-for-codeql-pull-request-alerts-now-included-on-the-security-overview-dashboard
+https://github.blog/changelog/2025-06-05-visual-studio-17-14-june-release
