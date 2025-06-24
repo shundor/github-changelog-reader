@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-06-20-upcoming-deprecation-of-o1-gpt-4-5-o3-mini-and-gpt-4o
+https://github.blog/changelog/2025-06-23-enforce-admission-policies-with-artifact-attestations-in-kubernetes-using-opa-gatekeeper
