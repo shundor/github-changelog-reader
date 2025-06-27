@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-06-25-improved-attachments-and-larger-context-in-copilot-chat-in-public-preview
+https://github.blog/changelog/2025-06-26-improved-pull-request-files-changed-experience-now-in-public-preview
