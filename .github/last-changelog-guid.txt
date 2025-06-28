@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-06-26-improved-pull-request-files-changed-experience-now-in-public-preview
+https://github.blog/changelog/2025-06-27-upcoming-breaking-change-for-github-actions-removal-of-larger-hosted-runners-from-self-hosted-api
