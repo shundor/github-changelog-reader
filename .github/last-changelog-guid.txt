@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-06-27-upcoming-breaking-change-for-github-actions-removal-of-larger-hosted-runners-from-self-hosted-api
+https://github.blog/changelog/2025-06-30-codeql-support-for-rust-now-in-public-preview
