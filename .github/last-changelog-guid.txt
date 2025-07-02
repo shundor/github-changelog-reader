@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-06-30-codeql-support-for-rust-now-in-public-preview
+https://github.blog/changelog/2025-07-01-enterprise-level-access-for-github-apps-and-installation-automation-apis
