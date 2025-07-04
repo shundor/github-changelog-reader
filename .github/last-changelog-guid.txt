@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-07-02-copilot-coding-agent-now-has-its-own-web-browser
+https://github.blog/changelog/2025-07-02-codeql-2-22-1-bring-rust-support-to-public-preview
