@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-07-02-codeql-2-22-1-bring-rust-support-to-public-preview
+https://github.blog/changelog/2025-07-07-introducing-a-5000-repository-limit-for-github-enterprise-importer-organization-migrations
