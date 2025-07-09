@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-07-07-introducing-a-5000-repository-limit-for-github-enterprise-importer-organization-migrations
+https://github.blog/changelog/2025-07-07-dependency-auto-submission-now-supports-python
