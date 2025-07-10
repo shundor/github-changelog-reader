@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-07-07-dependency-auto-submission-now-supports-python
+https://github.blog/changelog/2025-07-09-new-copilot-chat-features-now-generally-available-on-github
