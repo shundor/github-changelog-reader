@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-07-09-new-copilot-chat-features-now-generally-available-on-github
+https://github.blog/changelog/2025-07-10-github-copilot-coding-agent-now-uses-one-premium-request-per-session
