@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-07-11-upcoming-changes-to-macos-hosted-runners-macos-latest-migration-and-xcode-support-policy-updates
+https://github.blog/changelog/2025-07-14-security-configurations-support-for-running-codeql-in-either-default-or-advanced-setup
