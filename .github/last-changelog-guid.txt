@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-07-15-github-copilot-in-vs-code-june-release-v1-102
+https://github.blog/changelog/2025-07-16-agent-mode-for-jetbrains-eclipse-and-xcode-is-now-generally-available
