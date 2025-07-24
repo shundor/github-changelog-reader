@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-07-22-github-apps-can-now-review-secret-scanning-push-protection-bypass-and-alert-dismissal-requests
+https://github.blog/changelog/2025-07-23-agents-page-set-the-base-branch-for-github-copilot-coding-agent-tasks
