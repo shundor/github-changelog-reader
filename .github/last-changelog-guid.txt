@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-07-23-agents-page-set-the-base-branch-for-github-copilot-coding-agent-tasks
+https://github.blog/changelog/2025-07-24-github-consistently-maintains-user-defined-tab-width-preferences
