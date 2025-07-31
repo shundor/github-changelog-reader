@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-07-29-updated-ip-addresses-for-github-enterprise-importer-july-2025
+https://github.blog/changelog/2025-07-30-copilot-coding-agent-custom-setup-steps-are-more-reliable-and-easier-to-debug
