@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-07-31-github-actions-new-apis-and-windows-latest-migration-notice
+https://github.blog/changelog/2025-08-01-upcoming-deprecation-of-gpu-machine-type-in-codespaces
