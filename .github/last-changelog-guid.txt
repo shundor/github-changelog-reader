@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-08-01-upcoming-deprecation-of-gpu-machine-type-in-codespaces
+https://github.blog/changelog/2025-08-05-copilot-coding-agent-improved-pull-request-review-experience
