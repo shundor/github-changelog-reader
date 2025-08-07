@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-08-05-copilot-coding-agent-improved-pull-request-review-experience
+https://github.blog/changelog/2025-08-06-copilot-code-review-copilot-instruction-md-support-is-now-generally-available
