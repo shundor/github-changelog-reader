@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-08-06-gpt-5-is-now-generally-available-in-github-models
+https://github.blog/changelog/2025-08-08-dependabot-reviewers-configuration-option-is-replaced-by-code-owners
