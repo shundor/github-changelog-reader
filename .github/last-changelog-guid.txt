@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-08-13-added-last_authenticated_at-to-the-copilot-user-management-api
+https://github.blog/changelog/2025-08-14-codeql-expands-kotlin-support-and-additional-accuracy-improvements
