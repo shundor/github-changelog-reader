@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-08-18-migrate-repositories-with-github-owned-blob-storage
+https://github.blog/changelog/2025-08-19-secret-scanning-configuring-patterns-in-push-protection-is-now-generally-available
