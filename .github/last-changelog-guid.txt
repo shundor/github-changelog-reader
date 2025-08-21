@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-08-19-secret-scanning-configuring-patterns-in-push-protection-is-now-generally-available
+https://github.blog/changelog/2025-08-20-sunset-notice-copilot-knowledge-bases
