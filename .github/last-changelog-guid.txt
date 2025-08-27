@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-08-21-premium-request-overage-policy-is-generally-available-for-copilot-business-and-enterprise
+https://github.blog/changelog/2025-08-26-template-urls-for-fine-grained-pats-and-updated-permissions-ui
