@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-08-29-copilots-next-edit-suggestion-nes-in-public-preview-in-jetbrains
+https://github.blog/changelog/2025-08-28-graphql-api-resource-limits
