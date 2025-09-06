@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-09-04-profile-menu-enhancements-in-global-navigation
+https://github.blog/changelog/2025-09-05-github-actions-ai-labeler-and-moderator-with-the-github-models-inference-api
