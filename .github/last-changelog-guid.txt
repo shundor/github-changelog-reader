@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-09-24-copilot-spaces-is-now-generally-available
+https://github.blog/changelog/2025-09-25-copilot-can-create-issues-with-code-snippets-in-public-preview
