@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-09-25-copilot-can-create-issues-with-code-snippets-in-public-preview
+https://github.blog/changelog/2025-09-26-codeql-2-23-1-adds-support-for-java-25-typescript-5-9-and-swift-6-1-3
