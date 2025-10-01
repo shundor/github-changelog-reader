@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-09-29-strengthening-npm-security-important-changes-to-authentication-and-token-management
+https://github.blog/changelog/2025-09-30-start-your-new-repository-with-copilot-coding-agent
