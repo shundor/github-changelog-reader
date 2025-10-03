@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-09-30-spark-%f0%9f%9a%80-expanded-access-enhanced-reliability-and-faster-iteration-history
+https://github.blog/changelog/2025-10-01-claude-sonnet-4-5-is-now-available-in-visual-studio-jetbrains-ides-xcode-and-eclipse
