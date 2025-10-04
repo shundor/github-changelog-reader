@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-10-01-claude-sonnet-4-5-is-now-available-in-visual-studio-jetbrains-ides-xcode-and-eclipse
+https://github.blog/changelog/2025-10-03-auto-draft
