@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-10-06-enterprise-access-restrictions-now-supports-multiple-enterprises
+https://github.blog/changelog/2025-10-07-upcoming-deprecation-of-claude-sonnet-3-5
