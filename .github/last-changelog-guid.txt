@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-10-07-upcoming-deprecation-of-claude-sonnet-3-5
+https://github.blog/changelog/2025-10-09-codeql-2-23-2-adds-additional-detections-for-rust-and-improves-accuracy-across-languages
