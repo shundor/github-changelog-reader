@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-10-10-github-copilot-cli-faster-more-concise-and-prettier
+https://github.blog/changelog/2025-10-13-anthropics-claude-sonnet-4-5-is-now-generally-available-in-github-copilot
