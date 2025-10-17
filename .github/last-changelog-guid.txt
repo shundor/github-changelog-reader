@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-10-15-copilot-generated-commit-messages-on-github-com-are-generally-available
+https://github.blog/changelog/2025-10-16-copilot-coding-agent-can-now-search-the-web
