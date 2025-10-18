@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-10-16-copilot-coding-agent-can-now-search-the-web
+https://github.blog/changelog/2025-10-17-copilot-knowledge-bases-can-now-be-converted-to-copilot-spaces
