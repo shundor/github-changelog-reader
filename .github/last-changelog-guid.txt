@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-11-04-github-copilot-policy-update-for-unconfigured-policies
+https://github.blog/changelog/2025-11-05-the-legacy-copilot-usage-report-csv-is-no-longer-available
