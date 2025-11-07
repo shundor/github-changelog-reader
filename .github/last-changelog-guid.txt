@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-11-05-the-legacy-copilot-usage-report-csv-is-no-longer-available
+https://github.blog/changelog/2025-10-24-graphql-explorer-removal-from-api-documentation-on-november-7-2025
