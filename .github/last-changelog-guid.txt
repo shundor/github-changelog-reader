@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-12-08-enterprise-teams-product-limits-increased-by-over-10x
+https://github.blog/changelog/2025-12-08-npm-classic-tokens-revoked-session-based-auth-and-cli-token-management-now-available
