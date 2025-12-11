@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-12-08-npm-classic-tokens-revoked-session-based-auth-and-cli-token-management-now-available
+https://github.blog/changelog/2025-12-10-auto-model-selection-is-generally-available-in-github-copilot-in-visual-studio-code
