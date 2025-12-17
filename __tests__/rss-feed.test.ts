@@ -154,4 +154,85 @@ describe('RSS Feed', () => {
 
     await expect(promise).rejects.toThrow('Failed to parse RSS feed')
   })
+
+  test('extracts changelog-type and changelog-label categories', async () => {
+    const mockXml = `
+      <?xml version="1.0" encoding="UTF-8"?>
+      <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+        <channel>
+          <item>
+            <title>Test Entry</title>
+            <link>https://example.com/entry</link>
+            <pubDate>Mon, 01 Jan 2024 12:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[Test content]]></content:encoded>
+            <guid>123</guid>
+            <category domain="changelog-type"><![CDATA[Improvement]]></category>
+            <category domain="changelog-label"><![CDATA[copilot]]></category>
+          </item>
+        </channel>
+      </rss>
+    `
+
+    const promise = fetchChangelogFeed('https://github.blog/changelog/feed/')
+    mockResponse.dataCallback(Buffer.from(mockXml))
+    mockResponse.endCallback()
+
+    const result = await promise
+    expect(result).toHaveLength(1)
+    expect(result[0].changelogType).toBe('Improvement')
+    expect(result[0].changelogLabel).toBe('copilot')
+  })
+
+  test('handles items without categories', async () => {
+    const mockXml = `
+      <?xml version="1.0" encoding="UTF-8"?>
+      <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+        <channel>
+          <item>
+            <title>Test Entry</title>
+            <link>https://example.com/entry</link>
+            <pubDate>Mon, 01 Jan 2024 12:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[Test content]]></content:encoded>
+            <guid>123</guid>
+          </item>
+        </channel>
+      </rss>
+    `
+
+    const promise = fetchChangelogFeed('https://github.blog/changelog/feed/')
+    mockResponse.dataCallback(Buffer.from(mockXml))
+    mockResponse.endCallback()
+
+    const result = await promise
+    expect(result).toHaveLength(1)
+    expect(result[0].changelogType).toBeUndefined()
+    expect(result[0].changelogLabel).toBeUndefined()
+  })
+
+  test('handles items with only one category', async () => {
+    const mockXml = `
+      <?xml version="1.0" encoding="UTF-8"?>
+      <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+        <channel>
+          <item>
+            <title>Test Entry</title>
+            <link>https://example.com/entry</link>
+            <pubDate>Mon, 01 Jan 2024 12:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[Test content]]></content:encoded>
+            <guid>123</guid>
+            <category domain="changelog-type"><![CDATA[Feature]]></category>
+          </item>
+        </channel>
+      </rss>
+    `
+
+    const promise = fetchChangelogFeed('https://github.blog/changelog/feed/')
+    mockResponse.dataCallback(Buffer.from(mockXml))
+    mockResponse.endCallback()
+
+    const result = await promise
+    expect(result).toHaveLength(1)
+    expect(result[0].changelogType).toBe('Feature')
+    expect(result[0].changelogLabel).toBeUndefined()
+  })
 })
