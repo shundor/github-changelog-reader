@@ -164,7 +164,7 @@ async function ensureLabelsExist(
             ...repo,
             name: labelName,
             color: getDefaultLabelColor(labelName),
-            description: `Auto-created label from GitHub Changelog`
+            description: 'Auto-created label'
           })
           core.info(`Created label '${labelName}'`)
         } catch (createError) {
@@ -186,6 +186,7 @@ function getDefaultLabelColor(labelName: string): string {
   }
 
   // Convert hash to a 6-digit hex color
-  const color = Math.abs(hash).toString(16).padStart(6, '0').substring(0, 6)
+  // Ensure we get exactly 6 hex digits by padding to at least 6 chars and taking only the last 6
+  const color = (Math.abs(hash) % 0xffffff).toString(16).padStart(6, '0')
   return color
 }
