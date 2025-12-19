@@ -41033,7 +41033,7 @@ function normalizeLabelCase(label) {
     // Decode HTML entities
     let decoded = label;
     for (const [entity, char] of Object.entries(HTML_ENTITIES)) {
-        decoded = decoded.replace(new RegExp(entity, 'g'), char);
+        decoded = decoded.replaceAll(entity, char);
     }
     // Split by spaces and convert to title case
     return decoded
