@@ -50,15 +50,35 @@ async function parseRssFeed(xml) {
         const items = Array.isArray(result.rss.channel.item)
             ? result.rss.channel.item
             : [result.rss.channel.item];
-        return items.map((item) => ({
-            title: item.title,
-            link: item.link,
-            pubDate: item.pubDate,
-            content: item['content:encoded'] || item.description || '',
-            guid: typeof item.guid === 'object' && item.guid._
-                ? item.guid._
-                : String(item.guid)
-        }));
+        return items.map((item) => {
+            // Extract categories
+            let changelogType;
+            let changelogLabel;
+            if (item.category) {
+                const categories = Array.isArray(item.category)
+                    ? item.category
+                    : [item.category];
+                for (const cat of categories) {
+                    if (cat.$ && cat.$.domain === 'changelog-type') {
+                        changelogType = cat._;
+                    }
+                    else if (cat.$ && cat.$.domain === 'changelog-label') {
+                        changelogLabel = cat._;
+                    }
+                }
+            }
+            return {
+                title: item.title,
+                link: item.link,
+                pubDate: item.pubDate,
+                content: item['content:encoded'] || item.description || '',
+                guid: typeof item.guid === 'object' && item.guid._
+                    ? item.guid._
+                    : String(item.guid),
+                changelogType,
+                changelogLabel
+            };
+        });
     }
     catch (error) {
         core.warning(`Error parsing RSS feed: ${error}`);

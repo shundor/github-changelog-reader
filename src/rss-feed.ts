@@ -8,6 +8,8 @@ export interface ChangelogEntry {
   pubDate: string
   content: string
   guid: string
+  changelogType?: string
+  changelogLabel?: string
 }
 
 // Define interfaces for RSS structure
@@ -23,6 +25,9 @@ interface RssItem {
   description?: string
   'content:encoded'?: string
   guid: string | RssGuid
+  category?:
+    | Array<{ _: string; $: { domain?: string } }>
+    | { _: string; $: { domain?: string } }
   [key: string]: unknown
 }
 
@@ -102,16 +107,38 @@ async function parseRssFeed(xml: string): Promise<ChangelogEntry[]> {
       ? result.rss.channel.item
       : [result.rss.channel.item]
 
-    return items.map((item: RssItem) => ({
-      title: item.title,
-      link: item.link,
-      pubDate: item.pubDate,
-      content: item['content:encoded'] || item.description || '',
-      guid:
-        typeof item.guid === 'object' && item.guid._
-          ? item.guid._
-          : String(item.guid)
-    }))
+    return items.map((item: RssItem) => {
+      // Extract categories
+      let changelogType: string | undefined
+      let changelogLabel: string | undefined
+
+      if (item.category) {
+        const categories = Array.isArray(item.category)
+          ? item.category
+          : [item.category]
+
+        for (const cat of categories) {
+          if (cat.$ && cat.$.domain === 'changelog-type') {
+            changelogType = cat._
+          } else if (cat.$ && cat.$.domain === 'changelog-label') {
+            changelogLabel = cat._
+          }
+        }
+      }
+
+      return {
+        title: item.title,
+        link: item.link,
+        pubDate: item.pubDate,
+        content: item['content:encoded'] || item.description || '',
+        guid:
+          typeof item.guid === 'object' && item.guid._
+            ? item.guid._
+            : String(item.guid),
+        changelogType,
+        changelogLabel
+      }
+    })
   } catch (error) {
     core.warning(`Error parsing RSS feed: ${error}`)
     throw new Error(`Failed to parse RSS feed: ${error}`)

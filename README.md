@@ -60,6 +60,7 @@ jobs:
 | `store-location` | File path to store the last processed entry ID | No | `.github/last-changelog-guid.txt` |
 | `issue-title-prefix` | Prefix for issue titles | No | `GitHub Changelog: ` |
 | `feed-url` | URL to the GitHub Changelog RSS feed | No | `https://github.blog/changelog/feed/` |
+| `auto-label` | Automatically add labels from changelog-type and changelog-label categories | No | `true` |
 
 ## Outputs
 
@@ -74,7 +75,25 @@ Issues created will have:
 - Title with the changelog entry title
 - Body with the changelog entry content
 - A label (customizable via inputs)
+- Additional labels from the changelog entry's `changelog-type` and `changelog-label` categories (when `auto-label` is enabled)
 - A link back to the original changelog entry
+
+### Auto-Labeling Feature
+
+When `auto-label` is set to `true` (default), the action will automatically:
+1. Extract labels from the RSS feed's `changelog-type` and `changelog-label` category fields
+2. Create these labels in your repository if they don't already exist
+3. Apply them to the created issues along with the base label
+
+For example, if an RSS entry contains:
+```xml
+<category domain="changelog-type"><![CDATA[Improvement]]></category>
+<category domain="changelog-label"><![CDATA[copilot]]></category>
+```
+
+The created issue will be tagged with both "Improvement" and "copilot" labels (in addition to the base "changelog" label).
+
+To disable this feature, set `auto-label: false` in your workflow configuration.
 
 ## Development
 
