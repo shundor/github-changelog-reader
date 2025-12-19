@@ -90,6 +90,30 @@ function fetchXml(url: string): Promise<string> {
   })
 }
 
+/**
+ * Normalizes a changelog label to title case.
+ * Handles special cases like "and" and preserves proper capitalization.
+ * Also decodes HTML entities.
+ */
+function normalizeLabelCase(label: string): string {
+  // Decode common HTML entities
+  const decoded = label
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+
+  // Split by spaces and convert to title case
+  return decoded
+    .split(' ')
+    .map((word) => {
+      // Capitalize first letter, lowercase the rest
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+    })
+    .join(' ')
+}
+
 async function parseRssFeed(xml: string): Promise<ChangelogEntry[]> {
   try {
     const parser = new Parser({
@@ -121,7 +145,7 @@ async function parseRssFeed(xml: string): Promise<ChangelogEntry[]> {
           if (cat.$ && cat.$.domain === 'changelog-type') {
             changelogType = cat._
           } else if (cat.$ && cat.$.domain === 'changelog-label') {
-            changelogLabel = cat._
+            changelogLabel = normalizeLabelCase(cat._)
           }
         }
       }

@@ -154,7 +154,7 @@ describe('GitHub Changelog Reader', () => {
         link: 'https://example.com/123',
         pubDate: '2024-01-01',
         changelogType: 'Improvement',
-        changelogLabel: 'copilot'
+        changelogLabel: 'Copilot'
       }
     ]
 
@@ -179,7 +179,7 @@ describe('GitHub Changelog Reader', () => {
     )
     expect(mockCreateLabel).toHaveBeenCalledWith(
       expect.objectContaining({
-        name: 'copilot'
+        name: 'Copilot'
       })
     )
 
@@ -189,7 +189,7 @@ describe('GitHub Changelog Reader', () => {
       repo: 'test-repo',
       title: '[Changelog] New Feature',
       body: expect.stringContaining('Added something cool'),
-      labels: ['changelog', 'Improvement', 'copilot']
+      labels: ['changelog', 'Improvement', 'Copilot']
     })
 
     expect(mockSetOutput).toHaveBeenCalledWith('issues-created', '1')
@@ -223,7 +223,7 @@ describe('GitHub Changelog Reader', () => {
         link: 'https://example.com/123',
         pubDate: '2024-01-01',
         changelogType: 'Improvement',
-        changelogLabel: 'copilot'
+        changelogLabel: 'Copilot'
       }
     ]
 
