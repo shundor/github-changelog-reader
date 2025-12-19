@@ -64,9 +64,10 @@ const SPECIAL_CASE_WORDS = {
 function normalizeLabelCase(label) {
     // Decode HTML entities using a single regex replace with fallback
     const decoded = label.replace(HTML_ENTITY_PATTERN, (match) => HTML_ENTITIES[match] || match);
-    // Split by spaces and convert to title case
+    // Split by whitespace and convert to title case
     return decoded
-        .split(' ')
+        .split(/\s+/)
+        .filter(Boolean)
         .map((word) => {
         const lowerWord = word.toLowerCase();
         // Check if it's a special case
