@@ -41008,17 +41008,22 @@ function fetchXml(url) {
 }
 /**
  * Normalizes a changelog label to title case.
- * Handles special cases like "and" and preserves proper capitalization.
- * Also decodes HTML entities.
+ * Decodes HTML entities and handles special capitalizations for proper nouns and acronyms.
  */
 function normalizeLabelCase(label) {
-    // Decode common HTML entities
-    const decoded = label
-        .replace(/&amp;/g, '&')
-        .replace(/&lt;/g, '<')
-        .replace(/&gt;/g, '>')
-        .replace(/&quot;/g, '"')
-        .replace(/&#39;/g, "'");
+    // HTML entity map for decoding
+    const htmlEntities = {
+        '&amp;': '&',
+        '&lt;': '<',
+        '&gt;': '>',
+        '&quot;': '"',
+        '&#39;': "'"
+    };
+    // Decode HTML entities
+    let decoded = label;
+    for (const [entity, char] of Object.entries(htmlEntities)) {
+        decoded = decoded.replace(new RegExp(entity, 'g'), char);
+    }
     // Define special case words that should retain specific capitalization
     const specialCases = {
         github: 'GitHub',
