@@ -104,11 +104,28 @@ function normalizeLabelCase(label: string): string {
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
 
+  // Define special case words that should retain specific capitalization
+  const specialCases: Record<string, string> = {
+    github: 'GitHub',
+    api: 'API',
+    apis: 'APIs',
+    oauth: 'OAuth',
+    saml: 'SAML',
+    cli: 'CLI',
+    ci: 'CI',
+    cd: 'CD'
+  }
+
   // Split by spaces and convert to title case
   return decoded
     .split(' ')
     .map((word) => {
-      // Capitalize first letter, lowercase the rest
+      const lowerWord = word.toLowerCase()
+      // Check if it's a special case
+      if (specialCases[lowerWord]) {
+        return specialCases[lowerWord]
+      }
+      // Otherwise, capitalize first letter, lowercase the rest
       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
     })
     .join(' ')

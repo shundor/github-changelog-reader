@@ -293,7 +293,33 @@ describe('RSS Feed', () => {
 
     const result = await promise
     expect(result).toHaveLength(2)
-    expect(result[0].changelogLabel).toBe('Github Copilot')
+    expect(result[0].changelogLabel).toBe('GitHub Copilot')
     expect(result[1].changelogLabel).toBe('Code Security')
+  })
+
+  test('handles special case capitalizations (GitHub, API, etc.)', async () => {
+    const mockXml = `
+      <?xml version="1.0" encoding="UTF-8"?>
+      <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+        <channel>
+          <item>
+            <title>Test Entry 1</title>
+            <link>https://example.com/entry1</link>
+            <pubDate>Mon, 01 Jan 2024 12:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[Test content]]></content:encoded>
+            <guid>125</guid>
+            <category domain="changelog-label"><![CDATA[GITHUB API]]></category>
+          </item>
+        </channel>
+      </rss>
+    `
+
+    const promise = fetchChangelogFeed('https://github.blog/changelog/feed/')
+    mockResponse.dataCallback(Buffer.from(mockXml))
+    mockResponse.endCallback()
+
+    const result = await promise
+    expect(result).toHaveLength(1)
+    expect(result[0].changelogLabel).toBe('GitHub API')
   })
 })
