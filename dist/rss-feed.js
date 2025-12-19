@@ -37,6 +37,48 @@ function fetchXml(url) {
         req.end();
     });
 }
+// HTML entity map for decoding
+const HTML_ENTITIES = {
+    '&amp;': '&',
+    '&lt;': '<',
+    '&gt;': '>',
+    '&quot;': '"',
+    '&#39;': "'"
+};
+// Regex pattern for matching HTML entities
+const HTML_ENTITY_PATTERN = /&(?:amp|lt|gt|quot|#39);/g;
+// Special case words that should retain specific capitalization
+const SPECIAL_CASE_WORDS = {
+    github: 'GitHub',
+    api: 'API',
+    apis: 'APIs',
+    oauth: 'OAuth',
+    saml: 'SAML',
+    cli: 'CLI',
+    cicd: 'CI/CD'
+};
+/**
+ * Normalizes a changelog label to title case.
+ * Decodes HTML entities and handles special capitalizations for proper nouns and acronyms.
+ */
+function normalizeLabelCase(label) {
+    // Decode HTML entities using a single regex replace with fallback
+    const decoded = label.replace(HTML_ENTITY_PATTERN, (match) => HTML_ENTITIES[match] || match);
+    // Split by whitespace and convert to title case
+    return decoded
+        .split(/\s+/)
+        .filter(Boolean)
+        .map((word) => {
+        const lowerWord = word.toLowerCase();
+        // Check if it's a special case
+        if (SPECIAL_CASE_WORDS[lowerWord]) {
+            return SPECIAL_CASE_WORDS[lowerWord];
+        }
+        // Otherwise, capitalize first letter, lowercase the rest
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    })
+        .join(' ');
+}
 async function parseRssFeed(xml) {
     try {
         const parser = new Parser({
@@ -50,15 +92,35 @@ async function parseRssFeed(xml) {
         const items = Array.isArray(result.rss.channel.item)
             ? result.rss.channel.item
             : [result.rss.channel.item];
-        return items.map((item) => ({
-            title: item.title,
-            link: item.link,
-            pubDate: item.pubDate,
-            content: item['content:encoded'] || item.description || '',
-            guid: typeof item.guid === 'object' && item.guid._
-                ? item.guid._
-                : String(item.guid)
-        }));
+        return items.map((item) => {
+            // Extract categories
+            let changelogType;
+            let changelogLabel;
+            if (item.category) {
+                const categories = Array.isArray(item.category)
+                    ? item.category
+                    : [item.category];
+                for (const cat of categories) {
+                    if (cat.$ && cat.$.domain === 'changelog-type') {
+                        changelogType = cat._;
+                    }
+                    else if (cat.$ && cat.$.domain === 'changelog-label') {
+                        changelogLabel = normalizeLabelCase(cat._);
+                    }
+                }
+            }
+            return {
+                title: item.title,
+                link: item.link,
+                pubDate: item.pubDate,
+                content: item['content:encoded'] || item.description || '',
+                guid: typeof item.guid === 'object' && item.guid._
+                    ? item.guid._
+                    : String(item.guid),
+                changelogType,
+                changelogLabel
+            };
+        });
     }
     catch (error) {
         core.warning(`Error parsing RSS feed: ${error}`);

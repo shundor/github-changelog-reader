@@ -12,6 +12,7 @@ export async function run(): Promise<void> {
     const storeLocation = core.getInput('store-location')
     const issueTitlePrefix = core.getInput('issue-title-prefix')
     const feedUrl = core.getInput('feed-url')
+    const autoLabel = core.getInput('auto-label') === 'true'
 
     const octokit = github.getOctokit(token)
     const context = github.context
@@ -60,7 +61,8 @@ export async function run(): Promise<void> {
         context.repo,
         entry,
         label,
-        issueTitlePrefix
+        issueTitlePrefix,
+        autoLabel
       )
       issuesCreated++
       core.info(`Created issue for entry: ${entry.title}`)
@@ -91,7 +93,8 @@ async function createIssueFromEntry(
   repo: { owner: string; repo: string },
   entry: ChangelogEntry,
   label: string,
-  titlePrefix: string
+  titlePrefix: string,
+  autoLabel: boolean
 ): Promise<void> {
   const title = `${titlePrefix}${entry.title}`
   const body = `
@@ -105,7 +108,27 @@ ${entry.content}
 📅 Published: ${entry.pubDate}
   `.trim()
 
-  const labels = label ? [label] : []
+  const labels: string[] = []
+
+  // Add the base label if provided
+  if (label) {
+    labels.push(label)
+  }
+
+  // Add category-based labels if auto-label is enabled
+  if (autoLabel) {
+    if (entry.changelogType) {
+      labels.push(entry.changelogType)
+    }
+    if (entry.changelogLabel) {
+      labels.push(entry.changelogLabel)
+    }
+  }
+
+  // Ensure all labels exist in the repository
+  if (labels.length > 0) {
+    await ensureLabelsExist(octokit, repo, labels)
+  }
 
   await octokit.rest.issues.create({
     ...repo,
@@ -113,4 +136,57 @@ ${entry.content}
     body,
     labels
   })
+}
+
+async function ensureLabelsExist(
+  octokit: ReturnType<typeof github.getOctokit>,
+  repo: { owner: string; repo: string },
+  labels: string[]
+): Promise<void> {
+  for (const labelName of labels) {
+    try {
+      // Try to get the label
+      await octokit.rest.issues.getLabel({
+        ...repo,
+        name: labelName
+      })
+      core.info(`Label '${labelName}' already exists`)
+    } catch (error: unknown) {
+      // If label doesn't exist, create it
+      if (
+        error &&
+        typeof error === 'object' &&
+        'status' in error &&
+        error.status === 404
+      ) {
+        try {
+          await octokit.rest.issues.createLabel({
+            ...repo,
+            name: labelName,
+            color: getDefaultLabelColor(labelName),
+            description: 'Auto-created label'
+          })
+          core.info(`Created label '${labelName}'`)
+        } catch (createError) {
+          core.warning(`Failed to create label '${labelName}': ${createError}`)
+        }
+      } else {
+        core.warning(`Error checking label '${labelName}': ${error}`)
+      }
+    }
+  }
+}
+
+function getDefaultLabelColor(labelName: string): string {
+  // Generate a consistent color based on the label name
+  // Use a simple hash function to convert label name to a color
+  let hash = 0
+  for (let i = 0; i < labelName.length; i++) {
+    hash = labelName.charCodeAt(i) + ((hash << 5) - hash)
+  }
+
+  // Convert hash to a 6-digit hex color
+  // Ensure we get exactly 6 hex digits by padding to at least 6 chars and taking only the last 6
+  const color = (Math.abs(hash) % 0xffffff).toString(16).padStart(6, '0')
+  return color
 }

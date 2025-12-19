@@ -22,6 +22,10 @@ inputs:
     description: 'URL to the GitHub Changelog RSS feed'
     required: false
     default: 'https://github.blog/changelog/feed/'
+  auto-label:
+    description: 'Automatically add labels from changelog-type and changelog-label categories'
+    required: false
+    default: 'true'
 
 outputs:
   issues-created:

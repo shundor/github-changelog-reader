@@ -17,6 +17,8 @@
       <pubDate>Wed, 28 Aug 2024 18:30:00 +0000</pubDate>
       <dc:creator>github-actions[bot]</dc:creator>
       <guid isPermaLink="false">github-changelog-2024-08-28-1</guid>
+      <category domain="changelog-type"><![CDATA[Improvement]]></category>
+      <category domain="changelog-label"><![CDATA[copilot]]></category>
       <description>A brief description of the new API endpoint</description>
       <content:encoded><![CDATA[
         <h2>New Repository Statistics API</h2>
@@ -36,6 +38,8 @@
       <pubDate>Tue, 27 Aug 2024 14:15:00 +0000</pubDate>
       <dc:creator>github-actions[bot]</dc:creator>
       <guid isPermaLink="false">github-changelog-2024-08-27-1</guid>
+      <category domain="changelog-type"><![CDATA[Feature]]></category>
+      <category domain="changelog-label"><![CDATA[actions]]></category>
       <description>Workflow dispatch events now support additional payload options</description>
       <content:encoded><![CDATA[
         <h2>Enhanced workflow_dispatch Events</h2>
