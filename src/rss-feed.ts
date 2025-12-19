@@ -90,6 +90,56 @@ function fetchXml(url: string): Promise<string> {
   })
 }
 
+// HTML entity map for decoding
+const HTML_ENTITIES: Record<string, string> = {
+  '&amp;': '&',
+  '&lt;': '<',
+  '&gt;': '>',
+  '&quot;': '"',
+  '&#39;': "'"
+}
+
+// Regex pattern for matching HTML entities
+const HTML_ENTITY_PATTERN = /&(?:amp|lt|gt|quot|#39);/g
+
+// Special case words that should retain specific capitalization
+const SPECIAL_CASE_WORDS: Record<string, string> = {
+  github: 'GitHub',
+  api: 'API',
+  apis: 'APIs',
+  oauth: 'OAuth',
+  saml: 'SAML',
+  cli: 'CLI',
+  cicd: 'CI/CD'
+}
+
+/**
+ * Normalizes a changelog label to title case.
+ * Decodes HTML entities and handles special capitalizations for proper nouns and acronyms.
+ */
+function normalizeLabelCase(label: string): string {
+  // Decode HTML entities using a single regex replace with fallback
+  const decoded = label.replace(
+    HTML_ENTITY_PATTERN,
+    (match) => HTML_ENTITIES[match] || match
+  )
+
+  // Split by whitespace and convert to title case
+  return decoded
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => {
+      const lowerWord = word.toLowerCase()
+      // Check if it's a special case
+      if (SPECIAL_CASE_WORDS[lowerWord]) {
+        return SPECIAL_CASE_WORDS[lowerWord]
+      }
+      // Otherwise, capitalize first letter, lowercase the rest
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+    })
+    .join(' ')
+}
+
 async function parseRssFeed(xml: string): Promise<ChangelogEntry[]> {
   try {
     const parser = new Parser({
@@ -121,7 +171,7 @@ async function parseRssFeed(xml: string): Promise<ChangelogEntry[]> {
           if (cat.$ && cat.$.domain === 'changelog-type') {
             changelogType = cat._
           } else if (cat.$ && cat.$.domain === 'changelog-label') {
-            changelogLabel = cat._
+            changelogLabel = normalizeLabelCase(cat._)
           }
         }
       }
