@@ -118,10 +118,10 @@ const SPECIAL_CASE_WORDS: Record<string, string> = {
  * Decodes HTML entities and handles special capitalizations for proper nouns and acronyms.
  */
 function normalizeLabelCase(label: string): string {
-  // Decode HTML entities using a single regex replace
+  // Decode HTML entities using a single regex replace with fallback
   const decoded = label.replace(
     HTML_ENTITY_PATTERN,
-    (match) => HTML_ENTITIES[match]
+    (match) => HTML_ENTITIES[match] || match
   )
 
   // Split by spaces and convert to title case
