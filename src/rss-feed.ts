@@ -90,36 +90,36 @@ function fetchXml(url: string): Promise<string> {
   })
 }
 
+// HTML entity map for decoding
+const HTML_ENTITIES: Record<string, string> = {
+  '&amp;': '&',
+  '&lt;': '<',
+  '&gt;': '>',
+  '&quot;': '"',
+  '&#39;': "'"
+}
+
+// Special case words that should retain specific capitalization
+const SPECIAL_CASE_WORDS: Record<string, string> = {
+  github: 'GitHub',
+  api: 'API',
+  apis: 'APIs',
+  oauth: 'OAuth',
+  saml: 'SAML',
+  cli: 'CLI',
+  ci: 'CI',
+  cd: 'CD'
+}
+
 /**
  * Normalizes a changelog label to title case.
  * Decodes HTML entities and handles special capitalizations for proper nouns and acronyms.
  */
 function normalizeLabelCase(label: string): string {
-  // HTML entity map for decoding
-  const htmlEntities: Record<string, string> = {
-    '&amp;': '&',
-    '&lt;': '<',
-    '&gt;': '>',
-    '&quot;': '"',
-    '&#39;': "'"
-  }
-
   // Decode HTML entities
   let decoded = label
-  for (const [entity, char] of Object.entries(htmlEntities)) {
+  for (const [entity, char] of Object.entries(HTML_ENTITIES)) {
     decoded = decoded.replace(new RegExp(entity, 'g'), char)
-  }
-
-  // Define special case words that should retain specific capitalization
-  const specialCases: Record<string, string> = {
-    github: 'GitHub',
-    api: 'API',
-    apis: 'APIs',
-    oauth: 'OAuth',
-    saml: 'SAML',
-    cli: 'CLI',
-    ci: 'CI',
-    cd: 'CD'
   }
 
   // Split by spaces and convert to title case
@@ -128,8 +128,8 @@ function normalizeLabelCase(label: string): string {
     .map((word) => {
       const lowerWord = word.toLowerCase()
       // Check if it's a special case
-      if (specialCases[lowerWord]) {
-        return specialCases[lowerWord]
+      if (SPECIAL_CASE_WORDS[lowerWord]) {
+        return SPECIAL_CASE_WORDS[lowerWord]
       }
       // Otherwise, capitalize first letter, lowercase the rest
       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
