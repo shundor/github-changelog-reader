@@ -99,6 +99,9 @@ const HTML_ENTITIES: Record<string, string> = {
   '&#39;': "'"
 }
 
+// Regex pattern for matching HTML entities
+const HTML_ENTITY_PATTERN = /&(?:amp|lt|gt|quot|#39);/g
+
 // Special case words that should retain specific capitalization
 const SPECIAL_CASE_WORDS: Record<string, string> = {
   github: 'GitHub',
@@ -107,8 +110,7 @@ const SPECIAL_CASE_WORDS: Record<string, string> = {
   oauth: 'OAuth',
   saml: 'SAML',
   cli: 'CLI',
-  ci: 'CI',
-  cd: 'CD'
+  cicd: 'CI/CD'
 }
 
 /**
@@ -116,11 +118,11 @@ const SPECIAL_CASE_WORDS: Record<string, string> = {
  * Decodes HTML entities and handles special capitalizations for proper nouns and acronyms.
  */
 function normalizeLabelCase(label: string): string {
-  // Decode HTML entities
-  let decoded = label
-  for (const [entity, char] of Object.entries(HTML_ENTITIES)) {
-    decoded = decoded.replaceAll(entity, char)
-  }
+  // Decode HTML entities using a single regex replace
+  const decoded = label.replace(
+    HTML_ENTITY_PATTERN,
+    (match) => HTML_ENTITIES[match]
+  )
 
   // Split by spaces and convert to title case
   return decoded
