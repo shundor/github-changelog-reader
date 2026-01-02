@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-12-22-improved-performance-for-github-actions-workflows-page
+https://github.blog/changelog/2025-12-24-reduced-pricing-for-github-hosted-runners-usage
