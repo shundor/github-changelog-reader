@@ -1,1 +1,1 @@
-https://github.blog/changelog/2025-12-24-reduced-pricing-for-github-hosted-runners-usage
+https://github.blog/changelog/2026-01-06-gemini-3-flash-is-now-available-in-visual-studio-jetbrains-ides-xcode-and-eclipse
