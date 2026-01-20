@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-01-16-github-copilot-now-supports-opencode
+https://github.blog/changelog/2026-01-19-enterprise-scoped-budgets-that-exclude-cost-center-usage-in-public-preview
