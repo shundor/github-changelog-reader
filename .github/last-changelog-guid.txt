@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-01-19-enterprise-scoped-budgets-that-exclude-cost-center-usage-in-public-preview
+https://github.blog/changelog/2026-01-20-codeql-2-23-9-has-been-released
