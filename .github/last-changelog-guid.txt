@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-01-20-codeql-2-23-9-has-been-released
+https://github.blog/changelog/2026-01-21-github-copilot-cli-plan-before-you-build-steer-as-you-go
