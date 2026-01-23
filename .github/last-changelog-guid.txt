@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-01-21-github-copilot-cli-plan-before-you-build-steer-as-you-go
+https://github.blog/changelog/2026-01-22-faster-loading-for-github-issues
