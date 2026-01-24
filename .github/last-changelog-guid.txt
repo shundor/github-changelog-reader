@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-01-22-faster-loading-for-github-issues
+https://github.blog/changelog/2026-01-22-improved-pull-request-files-changed-page-on-by-default
