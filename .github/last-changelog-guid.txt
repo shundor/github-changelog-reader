@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-01-26-gpt-5-2-codex-is-now-available-in-visual-studio-jetbrains-ides-xcode-and-eclipse
+https://github.blog/changelog/2026-01-26-introducing-the-agents-tab-in-your-repository
