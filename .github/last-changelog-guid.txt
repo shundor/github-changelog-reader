@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-01-26-introducing-the-agents-tab-in-your-repository
+https://github.blog/changelog/2026-01-27-acp-support-in-copilot-cli-is-now-in-public-preview
