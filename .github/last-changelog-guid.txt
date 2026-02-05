@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-02-03-dependabot-now-supports-oidc-authentication
+https://github.blog/changelog/2026-02-04-showing-tool-calls-and-other-improvements-to-copilot-chat-on-the-web
