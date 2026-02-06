@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-02-04-showing-tool-calls-and-other-improvements-to-copilot-chat-on-the-web
+https://github.blog/changelog/2026-02-05-improved-pull-request-files-changed-february-5-updates
