@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-02-06-codeql-2-24-1-improves-maven-private-registry-support-and-improves-query-accuracy
+https://github.blog/changelog/2026-02-06-claude-opus-4-6-fast-is-now-in-public-preview-for-github-copilot
