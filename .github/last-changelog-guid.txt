@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-02-06-claude-opus-4-6-fast-is-now-in-public-preview-for-github-copilot
+https://github.blog/changelog/2026-02-09-gpt-5-3-codex-is-now-generally-available-for-github-copilot
