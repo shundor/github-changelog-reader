@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-02-09-gpt-5-3-codex-is-now-generally-available-for-github-copilot
+https://github.blog/changelog/2026-02-10-track-additional-dependabot-configuration-changes-in-audit-logs
