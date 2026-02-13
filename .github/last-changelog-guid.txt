@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-02-10-track-additional-dependabot-configuration-changes-in-audit-logs
+https://github.blog/changelog/2026-02-11-github-mobile-model-picker-for-copilot-coding-agent
