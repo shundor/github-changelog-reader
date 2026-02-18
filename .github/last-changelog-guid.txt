@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-02-13-new-features-and-improvements-in-github-copilot-in-jetbrains-ides-2
+https://github.blog/changelog/2026-02-17-api-access-to-billing-usage-reports-in-public-preview
