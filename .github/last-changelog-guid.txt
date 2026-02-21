@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-02-19-workflow-dispatch-api-now-returns-run-ids
+https://github.blog/changelog/2026-02-20-organization-level-copilot-usage-metrics-dashboard-available-in-public-preview
