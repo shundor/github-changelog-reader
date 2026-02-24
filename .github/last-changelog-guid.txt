@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-02-20-organization-level-copilot-usage-metrics-dashboard-available-in-public-preview
+https://github.blog/changelog/2026-02-23-enterprise-defined-custom-organization-roles-are-generally-available
