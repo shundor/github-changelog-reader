@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-02-23-enterprise-defined-custom-organization-roles-are-generally-available
+https://github.blog/changelog/2026-02-24-github-enterprise-server-3-20-release-candidate-is-available
