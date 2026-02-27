@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-02-25-generate-pull-request-titles-with-copilot-on-the-web
+https://github.blog/changelog/2026-02-26-github-actions-now-supports-uploading-and-downloading-non-zipped-artifacts
