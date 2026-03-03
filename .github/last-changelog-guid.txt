@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-02-26-copilot-usage-metrics-now-includes-enterprise-level-github-copilot-cli-activity
+https://github.blog/changelog/2026-03-02-upcoming-deprecation-of-gemini-3-pro-and-gpt-5-1-models
