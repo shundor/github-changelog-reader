@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-03-02-upcoming-deprecation-of-gemini-3-pro-and-gpt-5-1-models
+https://github.blog/changelog/2026-03-03-dependabot-alert-assignees-are-now-generally-available
