@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-03-03-dependabot-alert-assignees-are-now-generally-available
+https://github.blog/changelog/2026-03-04-lock-and-unlock-draft-repository-security-advisories
