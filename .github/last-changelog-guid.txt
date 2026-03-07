@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-03-04-auto-draft
+https://github.blog/changelog/2026-03-06-figma-mcp-server-can-now-generate-design-layers-from-vs-code
