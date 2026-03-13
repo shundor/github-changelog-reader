@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-03-11-request-copilot-code-review-from-github-cli
+https://github.blog/changelog/2026-03-10-rest-api-version-2026-03-10-is-now-available
