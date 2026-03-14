@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-03-10-rest-api-version-2026-03-10-is-now-available
+https://github.blog/changelog/2026-03-13-optionally-skip-approval-for-copilot-coding-agent-actions-workflows
