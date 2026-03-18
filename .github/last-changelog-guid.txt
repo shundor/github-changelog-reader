@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-03-16-deprecating-the-cost-center-integration-on-the-enterprise-people-page
+https://github.blog/changelog/2026-03-17-copilot-coding-agent-works-faster-with-semantic-code-search
