@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-03-17-copilot-coding-agent-works-faster-with-semantic-code-search
+https://github.blog/changelog/2026-03-18-configure-copilot-coding-agents-validation-tools
