@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-03-19-more-visibility-into-copilot-coding-agent-sessions
+https://github.blog/changelog/2026-03-20-copilot-usage-metrics-now-resolve-auto-model-selection-to-actual-models
