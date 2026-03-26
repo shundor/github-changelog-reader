@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-03-24-ask-copilot-to-make-changes-to-any-pull-request
+https://github.blog/changelog/2026-03-25-github-copilot-for-jira-public-preview-enhancements
