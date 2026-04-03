@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-03-31-research-plan-and-code-with-copilot-cloud-agent
+https://github.blog/changelog/2026-04-02-copilot-sdk-in-public-preview
