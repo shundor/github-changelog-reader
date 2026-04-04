@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-04-02-copilot-sdk-in-public-preview
+https://github.blog/changelog/2026-04-03-organization-runner-controls-for-copilot-cloud-agent
