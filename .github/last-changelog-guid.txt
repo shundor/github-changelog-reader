@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-04-08-copilot-reviewed-pull-request-merge-metrics-now-in-the-usage-metrics-api
+https://github.blog/changelog/2026-04-09-auto-draft
