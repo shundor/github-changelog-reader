@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-04-15-codeql-2-25-2-adds-kotlin-2-3-20-support-and-other-updates
+https://github.blog/changelog/2026-04-16-manage-agent-skills-with-github-cli
