@@ -15,10 +15,11 @@ jobs:
       issues: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           # Need to fetch history to save state between runs
           fetch-depth: 0
+          persist-credentials: false
           
       - name: Check GitHub Changelog
         id: changelog
@@ -51,8 +52,11 @@ jobs:
       - name: Report results
         if: success()
         run: |
-          echo "Created ${{ steps.changelog.outputs.issues-created }} new issues for GitHub changelog entries"
-          echo "Last processed entry: ${{ steps.changelog.outputs.last-processed-guid }}"
+          echo "Created ${STEPS_CHANGELOG_OUTPUTS_ISSUES_CREATED} new issues for GitHub changelog entries"
+          echo "Last processed entry: ${STEPS_CHANGELOG_OUTPUTS_LAST_PROCESSED_GUID}"
+        env:
+          STEPS_CHANGELOG_OUTPUTS_ISSUES_CREATED: ${{ steps.changelog.outputs.issues-created }}
+          STEPS_CHANGELOG_OUTPUTS_LAST_PROCESSED_GUID: ${{ steps.changelog.outputs.last-processed-guid }}
 
       - name: Commit updated state
         if: success()
