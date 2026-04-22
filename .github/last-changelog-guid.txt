@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-04-20-changes-to-github-copilot-plans-for-individuals
+https://github.blog/changelog/2026-04-21-codeql-now-supports-sanitizers-and-validators-in-models-as-data
