@@ -34,7 +34,7 @@ outputs:
     description: 'GUID of the last processed changelog entry'
 
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/index.js'
 
 branding:
