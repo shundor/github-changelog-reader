@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-04-22-copilot-chat-improvements-for-pull-requests
+https://github.blog/changelog/2026-04-24-notice-about-upcoming-new-format-for-github-app-installation-tokens
