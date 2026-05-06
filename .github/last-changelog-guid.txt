@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-05-01-upcoming-deprecation-of-gpt-5-2-and-gpt-5-2-codex
+https://github.blog/changelog/2026-05-05-secret-scanning-with-github-mcp-server-is-now-generally-available
