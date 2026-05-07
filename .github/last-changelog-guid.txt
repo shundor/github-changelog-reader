@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-05-05-secret-scanning-with-github-mcp-server-is-now-generally-available
+https://github.blog/changelog/2026-05-06-enterprise-managed-plugins-in-github-copilot-cli-are-now-in-public-preview
