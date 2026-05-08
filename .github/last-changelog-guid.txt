@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-05-06-enterprise-managed-plugins-in-github-copilot-cli-are-now-in-public-preview
+https://github.blog/changelog/2026-05-08-codeql-2-25-3-adds-swift-6-3-support
