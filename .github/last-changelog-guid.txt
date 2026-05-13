@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-05-11-create-repositories-on-the-go-with-github-mobile
+https://github.blog/changelog/2026-05-12-copilot-code-review-comment-experience-improvements
