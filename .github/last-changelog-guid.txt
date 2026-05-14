@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-05-12-copilot-code-review-comment-experience-improvements
+https://github.blog/changelog/2026-05-13-new-enterprise-installation-api-now-in-public-preview
