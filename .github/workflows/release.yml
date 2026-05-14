@@ -12,12 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           ref: ${{ github.event.release.target_commitish }}
+          persist-credentials: false
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
         with:
           node-version: '20'
           cache: 'npm'
@@ -43,7 +44,7 @@ jobs:
           git add dist/
           
           # Set release tag name or use commit SHA for workflow_dispatch
-          RELEASE_TAG="${{ github.event.release.tag_name }}"
+          RELEASE_TAG="${GITHUB_EVENT_RELEASE_TAG_NAME}"
           if [ -z "$RELEASE_TAG" ]; then
             RELEASE_TAG="$(git rev-parse --short HEAD)"
           fi
@@ -51,10 +52,13 @@ jobs:
           git commit -m "chore: update dist for release ${RELEASE_TAG}" || echo "No changes to commit"
           
           # Set target branch - use release target branch or default branch
-          TARGET_BRANCH="${{ github.event.release.target_commitish }}"
+          TARGET_BRANCH="${GITHUB_EVENT_RELEASE_TARGET_COMMITISH}"
           if [ -z "$TARGET_BRANCH" ]; then
             TARGET_BRANCH="${GITHUB_REF#refs/heads/}"
           fi
           
           # Push to the correct branch
           git push origin HEAD:"$TARGET_BRANCH"
+        env:
+          GITHUB_EVENT_RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
+          GITHUB_EVENT_RELEASE_TARGET_COMMITISH: ${{ github.event.release.target_commitish }}
