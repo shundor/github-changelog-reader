@@ -1,1 +1,1 @@
-https://github.blog/changelog/2026-05-14-team-level-copilot-usage-metrics-now-available-via-api
+https://github.blog/changelog/2026-05-15-github-app-installation-tokens-per-request-override-header
